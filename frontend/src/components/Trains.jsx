@@ -3,12 +3,11 @@ import axios from 'axios';
 import { TableContainer, Table, Paper, TableCell, TableRow, TableHead, TableBody, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-function AllTrains() {
+function Trains() {
   const [trains, setTrains] = useState([]);
 
   useEffect(() => {
-   
-    axios.get('http://localhost:8080/api/trains')
+    axios.get('http://localhost:5000/api/trains')
       .then((response) => {
         setTrains(response.data.data);
         console.log(response.data.data);
@@ -20,20 +19,20 @@ function AllTrains() {
 
   return (
     <div style={{ padding: '20px', maxWidth: '1000px', margin: 'auto' }}>
-      <Typography variant="h4" component="h1" align="center" gutterBottom>
+      <Typography variant="h4" component="h1" align="center" gutterBottom style={{ color: '#F26C22' }}>
         All Trains Schedule
       </Typography>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} style={{ backgroundColor: '#FFFFFF' }}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Train Name</TableCell>
-              <TableCell align="right">Train Number</TableCell>
-              <TableCell align="right">Departure Time</TableCell>
-              <TableCell align="right">Seats Available</TableCell>
-              <TableCell align="right">Price (Sleeper)</TableCell>
-              <TableCell align="right">Price (AC)</TableCell>
-              <TableCell align="center">Book</TableCell>
+              <TableCell style={{ color: '#FFFFFF', backgroundColor: '#F26C22' }}>Train Name</TableCell>
+              <TableCell align="right" style={{ color: '#FFFFFF', backgroundColor: '#F26C22' }}>Train Number</TableCell>
+              <TableCell align="right" style={{ color: '#FFFFFF', backgroundColor: '#F26C22' }}>Departure Time</TableCell>
+              <TableCell align="right" style={{ color: '#FFFFFF', backgroundColor: '#F26C22' }}>Seats Available</TableCell>
+              <TableCell align="right" style={{ color: '#FFFFFF', backgroundColor: '#F26C22' }}>Price (Sleeper)</TableCell>
+              <TableCell align="right" style={{ color: '#FFFFFF', backgroundColor: '#F26C22' }}>Price (AC)</TableCell>
+              <TableCell align="center" style={{ color: '#FFFFFF', backgroundColor: '#F26C22' }}>Show more</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -48,9 +47,10 @@ function AllTrains() {
                 <TableCell align="center">
                   <Button
                     component={Link}
-                    to={`/trains/${train.id}`}
+                    to={`/trains/${train.trainNumber}`}
                     variant="contained"
                     color="primary"
+                    style={{ backgroundColor: '#3B9038' }}
                   >
                     Show more
                   </Button>
@@ -64,4 +64,4 @@ function AllTrains() {
   );
 }
 
-export default AllTrains;
+export default Trains;
