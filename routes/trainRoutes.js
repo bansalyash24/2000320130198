@@ -1,25 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-
-
-
-async function getToken() {
-    const token_data = await fetch("http://20.244.56.144/train/auth", {
-        method: 'POST',
-        body: JSON.stringify({
-            "companyName": "Express Railway",
-            "clientID": "5bf522b0-105d-4a51-a6d8-2c3154cc2e4c",
-            "clientSecret": "VVVIrFCqrhOGVehn",
-            "ownerName": "Yash Bansal",
-            "ownerEmail": "yash.20b0131043@abes.ac.in",
-            "rollNo": "2000320130198"
-        })
-    })
-    const d_Data = await token_data.json()
-    return d_Data;
-}
-
+const {getToken}=require('../helpers/helper')
 
 function filterAndSortTrains(trainData) {
     const currentTime = new Date();

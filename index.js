@@ -8,6 +8,9 @@ app.use(cors({
     origin: '*'
 }))
 const trainRoute = require("./routes/trainRoutes");
+const singleTrainRoute = require("./routes/singleTrain");
+
 app.use('/api',trainRoute)
+app.use('/api/singleTrain',singleTrainRoute)
 
 app.listen(port, () => console.log(`Node server listening on port ${port}!`));
